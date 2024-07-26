@@ -1,0 +1,8 @@
+<h1>{{title}}</h1>
+<ul>
+  @for (user of usuarios; track user.usuario_id) {
+  <li>
+      {{user.usuario_id}} - {{user.usuario_nome}} {{user.usuario_sobrenome}}
+  </li>
+  }
+</ul>
