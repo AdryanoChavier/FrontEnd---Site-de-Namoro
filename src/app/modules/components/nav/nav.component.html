@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">Amor na rede</a>
+
+    @if (contaService.usuarioAtual()) {
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
           <a class="nav-link">Matches</a>
@@ -11,14 +13,28 @@
         <li class="nav-item">
           <a class="nav-link">Mensagens</a>
         </li>
-
       </ul>
+    }
+
+    @if(contaService.usuarioAtual()){
+      <div dropdown class="dropdown">
+        <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">Bem vindo Usuário!</a>
+        <div *dropdownMenu class="dropdown-menu">
+          <a class="dropdown-item">Editar perfil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="desconectar()">Sair</a>
+        </div>
+      </div>
+    }
+
+    @if (!contaService.usuarioAtual()) {
       <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
         <input name="usuario_nome" [(ngModel)]="model.usuario_nome"   class="form-control me-2"  placeholder="Usuário">
         <input name="usuario_sobrenome" [(ngModel)]="model.usuario_sobrenome"   class="form-control me-2"  placeholder="Sobrenome">
         <input name="senha" [(ngModel)]="model.senha"   class="form-control me-2"  placeholder="Senha" type="password">
         <button class="btn btn-outline-success" type="submit">Login</button>
       </form>
+    }
     </div>
 
 </nav>
