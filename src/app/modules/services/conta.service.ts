@@ -24,4 +24,15 @@ export class ContaService {
     sessionStorage.removeItem('usuario');
     this.usuarioAtual.set(null);
   }
+  cadastro(model:any){
+    return this.http.post<Usuario>(this.baseUrl + 'conta/registrar', model).pipe(
+      map(usuario =>{
+        if(usuario){
+          sessionStorage.setItem('usuario',JSON.stringify(usuario));
+          this.usuarioAtual.set(usuario);
+        }
+      })
+    );
+  }
+
 }

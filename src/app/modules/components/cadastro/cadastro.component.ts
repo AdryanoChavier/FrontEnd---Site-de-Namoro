@@ -1,6 +1,6 @@
 import { Usuario } from './../../interface/usuario';
 import { FormsModule } from '@angular/forms';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,6 +11,7 @@ import { Component, Input } from '@angular/core';
 })
 export class CadastroComponent {
   @Input() UsuarioHomeComponent: any;
+  @Output() cancelarCadastro = new EventEmitter();
   model: any = {}
 
   cadastro(){
@@ -18,6 +19,6 @@ export class CadastroComponent {
   }
 
   cancelar(){
-    console.log('cancelar')
+    this.cancelarCadastro.emit(false)
   }
 }

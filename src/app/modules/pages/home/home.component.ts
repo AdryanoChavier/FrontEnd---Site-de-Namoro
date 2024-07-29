@@ -12,14 +12,18 @@ import { CadastroComponent } from '../../components/cadastro/cadastro.component'
 })
 export class HomeComponent implements OnInit {
 usuarios: any;
-registroMode = false;
+cadastroMode = false;
 
 
   ngOnInit(): void {
 
   }
 registroToogle(){
-  this.registroMode = !this.registroMode
+  this.cadastroMode = !this.cadastroMode
+}
+
+cancelarCadastroMode(event: boolean){
+ this.cadastroMode = event
 }
 
 }

@@ -4,7 +4,7 @@
     <div class="container-meio mt-5">
         <div style="text-align:center;">
 
-            @if(!registroMode){
+            @if(!cadastroMode){
             <h1>Encontre seu par ideal</h1>
             <p class="lead">Entre para ver seu par perfeito... tudo o que você precisa fazer é se cadastrar</p>
             <div class="text-center">
@@ -15,7 +15,10 @@
               <div class="container-menu">
                 <div class="row justify-content-center">
                   <div class="col-4">
-                    <app-cadastro [UsuarioHomeComponent]="usuarios "></app-cadastro>
+                    <app-cadastro
+                    [UsuarioHomeComponent]="usuarios"
+                    (cancelarCadastro)="cancelarCadastroMode($event)"
+                    ></app-cadastro>
                   </div>
                 </div>
               </div>
