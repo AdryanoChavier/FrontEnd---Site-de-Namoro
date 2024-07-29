@@ -13,9 +13,10 @@
         </li>
 
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2"  placeholder="Usuário">
-        <input class="form-control me-2"  placeholder="Senha" type="password">
+      <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
+        <input name="usuario_nome" [(ngModel)]="model.usuario_nome"   class="form-control me-2"  placeholder="Usuário">
+        <input name="usuario_sobrenome" [(ngModel)]="model.usuario_sobrenome"   class="form-control me-2"  placeholder="Sobrenome">
+        <input name="senha" [(ngModel)]="model.senha"   class="form-control me-2"  placeholder="Senha" type="password">
         <button class="btn btn-outline-success" type="submit">Login</button>
       </form>
     </div>
