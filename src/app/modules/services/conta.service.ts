@@ -31,7 +31,9 @@ export class ContaService {
           sessionStorage.setItem('usuario',JSON.stringify(usuario));
           this.usuarioAtual.set(usuario);
         }
-      })
+        return usuario
+      }),
+
     );
   }
 

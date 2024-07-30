@@ -1,6 +1,7 @@
 import { Usuario } from './../../interface/usuario';
 import { FormsModule } from '@angular/forms';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { ContaService } from '../../services/conta.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,12 +11,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './cadastro.component.css'
 })
 export class CadastroComponent {
-  @Input() UsuarioHomeComponent: any;
+  private contaService = inject(ContaService);
   @Output() cancelarCadastro = new EventEmitter();
   model: any = {}
 
   cadastro(){
-    console.log(this.model);
+    this.contaService.cadastro(this.model).subscribe({
+      next: response =>{
+        console.log(response);
+        this.cancelar();
+      },
+    error: error => console.log(error)
+    })
   }
 
   cancelar(){
