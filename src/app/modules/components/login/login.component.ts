@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 export class LoginComponent {
   private router = inject(Router);
   contaService = inject(ContaService);
+  private toastr = inject(ToastrService)
   model: any = {};
 
   login() {
@@ -24,7 +26,7 @@ export class LoginComponent {
       next: _ => {
         this.router.navigateByUrl('/membros')
       },
-      error: error => console.log(error)
+      error: error => this.toastr.error(error.error)
     });
   }
 

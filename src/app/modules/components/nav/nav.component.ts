@@ -18,16 +18,8 @@ import { LoginComponent } from '../login/login.component';
 export class NavComponent {
   private router = inject(Router);
   contaService = inject(ContaService);
-  model: any = {};
-  login() {
-    this.contaService.login(this.model).subscribe({
-      next: _ => {
-      this.router.navigateByUrl('/membros');
 
-      },
-      error: error => console.log(error)
-    });
-  }
+
   desconectar(){
     this.contaService.desconectar();
     this.router.navigateByUrl('/')

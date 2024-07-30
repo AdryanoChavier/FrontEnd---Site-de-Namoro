@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { ContaService } from '../../services/conta.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './cadastro.component.css'
 })
 export class CadastroComponent {
+  private toastr = inject(ToastrService);
   private router = inject(Router);
   private contaService = inject(ContaService);
   @Output() cancelarCadastro = new EventEmitter();
@@ -23,7 +25,7 @@ export class CadastroComponent {
           this.router.navigateByUrl('/membros')
         this.cancelar();
       },
-    error: error => console.log(error)
+    error: error => this.toastr.error(error.error)
     })
   }
 
