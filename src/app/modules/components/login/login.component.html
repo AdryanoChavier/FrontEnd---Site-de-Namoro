@@ -1,0 +1,25 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Login
+</button>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #loginForm="ngForm" (ngSubmit)="login()" class="">
+          <input name="usuario_nome" [(ngModel)]="model.usuario_nome"   class="form-control me-2" style="margin-top: 10px;" placeholder="Usuário">
+          <input name="usuario_sobrenome" [(ngModel)]="model.usuario_sobrenome"   class="form-control me-2" style="margin-top: 10px;"  placeholder="Sobrenome">
+          <input name="senha" [(ngModel)]="model.senha"   class="form-control me-2"  placeholder="Senha" style="margin-top: 10px;" type="password">
+          <div class="modal-footer "style="margin-top: 10px;">
+            <button class="btn btn-outline-success" style="margin-top: 10px;"  type="submit">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

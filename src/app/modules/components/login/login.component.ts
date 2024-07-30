@@ -1,36 +1,35 @@
-import { Usuario } from './../../interface/usuario';
-
-import { ContaService } from './../../services/conta.service';
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { LoginComponent } from '../login/login.component';
+import { ContaService } from '../../services/conta.service';
+import { Router } from '@angular/router';
 
+
+import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @Component({
-  selector: 'app-nav',
+  selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,BsDropdownModule,RouterLink,RouterLinkActive,LoginComponent],
-  templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css',
+  imports: [FormsModule,BsDropdownModule,RouterLink,RouterLinkActive],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export class NavComponent {
+export class LoginComponent {
   private router = inject(Router);
   contaService = inject(ContaService);
   model: any = {};
+
   login() {
     this.contaService.login(this.model).subscribe({
       next: _ => {
-      this.router.navigateByUrl('/membros');
-
+        this.router.navigateByUrl('/membros')
       },
       error: error => console.log(error)
     });
   }
+
   desconectar(){
     this.contaService.desconectar();
     this.router.navigateByUrl('/')
   }
-
 }

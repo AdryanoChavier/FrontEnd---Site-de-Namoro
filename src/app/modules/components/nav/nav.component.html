@@ -15,7 +15,6 @@
         </li>
       </ul>
     }
-
     @if(contaService.usuarioAtual()){
       <div dropdown class="dropdown">
         <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">Bem vindo Usuário!</a>
@@ -26,15 +25,19 @@
         </div>
       </div>
     }
-
     @if (!contaService.usuarioAtual()) {
+<app-login></app-login>
+}
+
+    <!-- @if (!contaService.usuarioAtual()) {
       <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
         <input name="usuario_nome" [(ngModel)]="model.usuario_nome"   class="form-control me-2"  placeholder="Usuário">
         <input name="usuario_sobrenome" [(ngModel)]="model.usuario_sobrenome"   class="form-control me-2"  placeholder="Sobrenome">
         <input name="senha" [(ngModel)]="model.senha"   class="form-control me-2"  placeholder="Senha" type="password">
         <button class="btn btn-outline-success" type="submit">Login</button>
       </form>
-    }
+
+    }-->
     </div>
 
 </nav>
