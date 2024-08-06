@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { Usuario } from '../interface/usuario';
 import { map } from 'rxjs';
+import { environment } from '../../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
 export class ContaService {
   private http = inject(HttpClient);
-  baseUrl = 'http://localhost:5000/api/';
+  baseUrl = environment.apiUrl;
   usuarioAtual = signal<Usuario | null>(null);
 
   login(model:any){
