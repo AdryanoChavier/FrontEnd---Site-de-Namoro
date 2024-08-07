@@ -13,7 +13,6 @@
       <div class="modal-body">
         <form #loginForm="ngForm" (ngSubmit)="login()" class="">
           <input name="usuario_nome" [(ngModel)]="model.usuario_nome"   class="form-control me-2" style="margin-top: 10px;" placeholder="Usuário">
-          <input name="usuario_sobrenome" [(ngModel)]="model.usuario_sobrenome"   class="form-control me-2" style="margin-top: 10px;"  placeholder="Sobrenome">
           <input name="senha" [(ngModel)]="model.senha"   class="form-control me-2"  placeholder="Senha" style="margin-top: 10px;" type="password">
           <div class="modal-footer "style="margin-top: 10px;">
             <button class="btn btn-outline-success" style="margin-top: 10px;"  type="submit">Login</button>

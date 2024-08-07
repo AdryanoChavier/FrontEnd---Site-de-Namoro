@@ -1,1 +1,26 @@
-<p>membros-detalhes works!</p>
+@if(membro){
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <img
+          src="{{membro.fotoUrl || './assests/user.png'}}"
+          alt="{{membro.conhecidoComo}}"
+          class="card-img img-thumbnail">
+        <div class="card-body">
+            <div>
+               <strong>Location:</strong>
+               <p>{{membro.cidade}}, {{membro.pais}}</p>
+            </div>
+            <div>
+              <strong>Age:</strong>
+              <p>{{membro.idade}}</p>
+           </div>
+           <div>
+              <strong>Ativo pela última vez:</strong>
+              <p></p>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
