@@ -12,15 +12,50 @@
                <p>{{membro.cidade}}, {{membro.pais}}</p>
             </div>
             <div>
-              <strong>Age:</strong>
-              <p>{{membro.idade}}</p>
-           </div>
-           <div>
-              <strong>Ativo pela última vez:</strong>
-              <p></p>
-         </div>
+                <strong>Age:</strong>
+                <p>{{membro.idade}}</p>
+            </div>
+            <div>
+                <strong>Ativo pela última vez:</strong>
+                <p>{{membro.primeiroLogin}}</p>
+            </div>
+            <div>
+                <strong>Membro desde:</strong>
+                <p>{{membro.created}}</p>
+            </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary">Curtir</button>
+            <button class="btn btn-success">Mensagem</button>
+          </div>
         </div>
       </div>
     </div>
+      <div class="col-8">
+          <tabset class="membro-tabs">
+              <tab heading="About {{membro.conhecidoComo}}">
+                <h4>Descrição:</h4>
+                <p>{{membro.introducao}}</p>
+                <h4>Procurando por:</h4>
+                <p>{{membro.procurandoPor}}</p>
+              </tab>
+              <tab heading="Interesses">
+                <h4>Interesses:</h4>
+                <p>{{membro.interesses}}</p>
+              </tab>
+              <tab heading="Fotos" #fotoTab="tab">
+                @if(fotoTab.active){
+                  <gallery
+                      [items]="imagens"
+                      class="gallery">
+                </gallery>
+                }
+              </tab>
+              <tab heading="Mensagens">
+                <h4>Mensagens vao aqui</h4>
+              </tab>
+            </tabset>
+      </div>
   </div>
 }
