@@ -5,6 +5,7 @@ import { MembrosListaComponent } from './modules/pages/membros-lista/membros-lis
 import { MembrosDetalhesComponent } from './modules/pages/membros-detalhes/membros-detalhes.component';
 import { MensagensComponent } from './modules/pages/mensagens/mensagens.component';
 import { authGuard } from './guard/auth.guard';
+import { MembroEditComponent } from './membro/membro-edit/membro-edit.component';
 
 export const routes: Routes = [
   {path: '',component: HomeComponent},
@@ -14,6 +15,7 @@ export const routes: Routes = [
     children:[
       {path: 'membros',component: MembrosListaComponent },
       {path: 'membros/:usuario_nome',component: MembrosDetalhesComponent},
+      {path: 'membro/editar',component: MembroEditComponent},
       {path: 'lista',component: ListaComponent},
       {path: 'mensagens',component: MensagensComponent},
 
