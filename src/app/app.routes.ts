@@ -6,6 +6,7 @@ import { MembrosDetalhesComponent } from './modules/pages/membros-detalhes/membr
 import { MensagensComponent } from './modules/pages/mensagens/mensagens.component';
 import { authGuard } from './guard/auth.guard';
 import { MembroEditComponent } from './membro/membro-edit/membro-edit.component';
+import { TestErrosComponent } from './erros/test-erros/test-erros.component';
 
 export const routes: Routes = [
   {path: '',component: HomeComponent},
@@ -21,5 +22,6 @@ export const routes: Routes = [
 
     ]
   },
+  {path: 'errors',component:TestErrosComponent},
   {path: '**',component: HomeComponent, pathMatch:'full'}
 ];

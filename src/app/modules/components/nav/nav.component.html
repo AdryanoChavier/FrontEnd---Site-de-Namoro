@@ -2,8 +2,8 @@
   <div class="container">
     <a class="navbar-brand" routerLink="/" routerLinkActive="active">Amor na rede</a>
 
-    @if (contaService.usuarioAtual()) {
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        @if (contaService.usuarioAtual()) {
         <li class="nav-item">
           <a  routerLink="/membros" routerLinkActive="active" class="nav-link">Matches</a>
         </li>
@@ -13,8 +13,12 @@
         <li class="nav-item">
           <a routerLink="/mensagens" routerLinkActive="active"class="nav-link">Mensagens</a>
         </li>
+      }
+      <li class="nav-item">
+        <a routerLink="/errors" routerLinkActive="active"class="nav-link">Error</a>
+      </li>
       </ul>
-    }
+
     @if(contaService.usuarioAtual()){
       <div dropdown class="dropdown">
         <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">
