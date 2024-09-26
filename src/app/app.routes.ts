@@ -7,6 +7,8 @@ import { MensagensComponent } from './modules/pages/mensagens/mensagens.componen
 import { authGuard } from './guard/auth.guard';
 import { MembroEditComponent } from './membro/membro-edit/membro-edit.component';
 import { TestErrosComponent } from './erros/test-erros/test-erros.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
 export const routes: Routes = [
   {path: '',component: HomeComponent},
@@ -23,5 +25,7 @@ export const routes: Routes = [
     ]
   },
   {path: 'errors',component:TestErrosComponent},
+  {path: 'not-found',component:NotFoundComponent},
+  {path: 'server-error',component:ServerErrorComponent},
   {path: '**',component: HomeComponent, pathMatch:'full'}
 ];
