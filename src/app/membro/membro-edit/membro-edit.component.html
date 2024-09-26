@@ -1,1 +1,78 @@
-<p>membro-edit works!</p>
+@if(membro){
+  <div class="row">
+    <div class="col-4">
+      <h1>Seu Perfil</h1>
+    </div>
+    <div class="col-8">
+      <div class="alert alert-info">
+        <p><strong>Informação: </strong>
+          Você fez alterações. Quaisquer alterações não salvas serão perdidas</p>
+      </div>
+
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <img
+          src="{{membro.fotoUrl || './assests/user.png'}}"
+          alt="{{membro.conhecidoComo}}"
+          class="card-img img-thumbnail">
+        <div class="card-body">
+            <div>
+               <strong>Location:</strong>
+               <p>{{membro.cidade}}, {{membro.pais}}</p>
+            </div>
+            <div>
+                <strong>Age:</strong>
+                <p>{{membro.idade}}</p>
+            </div>
+            <div>
+                <strong>Ativo pela última vez:</strong>
+                <p>{{membro.primeiroLogin}}</p>
+            </div>
+            <div>
+                <strong>Membro desde:</strong>
+                <p>{{membro.created}}</p>
+            </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-success col-12">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <tabset class="membro-tabs">
+          <tab heading="About {{membro.conhecidoComo}}">
+            <form>
+              <h4 class="mt-2">Descrição:</h4>
+              <textarea
+                class="form-control"
+                name="introducao"
+                rows="6"
+                [(ngModel)]="membro.introducao">
+
+              </textarea>
+              <h4 class="mt-2">Procurando Por:</h4>
+              <textarea
+              class="form-control"
+              name="procurandoPor"
+              rows="6"
+              [(ngModel)]="membro.procurandoPor">
+            </textarea>
+            </form>
+          </tab>
+          <tab heading="Interesses">
+            <h4>Interesses:</h4>
+            <p>{{membro.interesses}}</p>
+          </tab>
+          <tab heading="Editar Fotos" >
+            <h4>Foto aqui</h4>
+          </tab>
+          <tab heading="Mensagens">
+            <h4>Mensagens vao aqui</h4>
+          </tab>
+        </tabset>
+  </div>
+  </div>
+}
