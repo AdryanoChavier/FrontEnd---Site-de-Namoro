@@ -1,5 +1,6 @@
-import { FormsModule } from '@angular/forms';
-import { Component, OnInit, inject } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { Membro } from '../../modules/interface/membro';
 import { ContaService } from '../../modules/services/conta.service';
 import { MembroService } from '../../modules/services/membro.service';
@@ -13,9 +14,11 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
   styleUrl: './membro-edit.component.css'
 })
 export class MembroEditComponent implements OnInit{
+  @ViewChild('editForm') editForm?: NgForm
   membro?: Membro;
   private contaService = inject(ContaService);
   private membroService = inject(MembroService);
+  private toastrService = inject(ToastrService)
 
   ngOnInit(): void {
     this.carregarMembro()
@@ -27,6 +30,11 @@ export class MembroEditComponent implements OnInit{
     this.membroService.getMembro(usuario.usuario_nome).subscribe({
       next: membro => this.membro = membro
     })
+  }
+  updateMembro(){
+    console.log(this.membro)
+    this.toastrService.success("Perfil atualizado com sucesso")
+    this.editForm?.reset(this.membro)
   }
 }
 
