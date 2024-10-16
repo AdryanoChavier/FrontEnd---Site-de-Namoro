@@ -1,14 +1,14 @@
 import { ContaService } from './modules/services/conta.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from "./modules/components/nav/nav.component";
+import{NgxSpinnerComponent} from 'ngx-spinner'
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavComponent],
-  template: '<app-nav></app-nav> <div class="container" style="margin-top:100px"><router-outlet /></div>',
+  imports: [RouterOutlet, NavComponent,NgxSpinnerComponent],
+  template: '<ngx-spinner> <h3>Loading...</h3></ngx-spinner><app-nav></app-nav> <div class="container" style="margin-top:100px"><router-outlet /></div>',
 })
 export class AppComponent implements OnInit {
 

@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild, inject } from '@angular/core';
 import { Membro } from '../../modules/interface/membro';
 import { ContaService } from '../../modules/services/conta.service';
 import { MembroService } from '../../modules/services/membro.service';
@@ -15,6 +15,11 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 })
 export class MembroEditComponent implements OnInit{
   @ViewChild('editForm') editForm?: NgForm
+  @HostListener('window:beforeunload',['$event']) notify($event:any){
+    if(this.editForm?.dirty){
+      $event.returnValue = true
+    }
+  }
   membro?: Membro;
   private contaService = inject(ContaService);
   private membroService = inject(MembroService);
@@ -32,9 +37,13 @@ export class MembroEditComponent implements OnInit{
     })
   }
   updateMembro(){
-    console.log(this.membro)
-    this.toastrService.success("Perfil atualizado com sucesso")
-    this.editForm?.reset(this.membro)
+    this.membroService.updateMembro(this.editForm?.value).subscribe({
+      next: _ =>{
+        this.toastrService.success("Perfil atualizado com sucesso")
+        this.editForm?.reset(this.membro)
+      }
+    })
+
   }
 }
 

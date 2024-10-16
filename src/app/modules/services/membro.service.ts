@@ -16,6 +16,8 @@ export class MembroService {
   getMembro(usuario_nome: string){
     return this.http.get<Membro>(this.baseUrl + 'usuario/' + usuario_nome);
   }
-
+  updateMembro(membro: Membro){
+    return this.http.put(this.baseUrl + 'usuario',membro)
+  }
 
 }

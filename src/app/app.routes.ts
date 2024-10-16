@@ -9,6 +9,7 @@ import { MembroEditComponent } from './membro/membro-edit/membro-edit.component'
 import { TestErrosComponent } from './erros/test-erros/test-erros.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { preventUnsavedChangesGuard } from './guard/prevent-unsaved-changes.guard';
 
 export const routes: Routes = [
   {path: '',component: HomeComponent},
@@ -18,7 +19,7 @@ export const routes: Routes = [
     children:[
       {path: 'membros',component: MembrosListaComponent },
       {path: 'membros/:usuario_nome',component: MembrosDetalhesComponent},
-      {path: 'membro/editar',component: MembroEditComponent},
+      {path: 'membro/editar',component: MembroEditComponent, canDeactivate:[preventUnsavedChangesGuard]},
       {path: 'lista',component: ListaComponent},
       {path: 'mensagens',component: MensagensComponent},
 
